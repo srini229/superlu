@@ -34,6 +34,8 @@ at the top-level directory.
 
 #include "slu_zdefs.h"
 
+void zlsolve(int, int, doublecomplex *, doublecomplex *);
+void zmatvec(int, int, int, doublecomplex *, doublecomplex *, doublecomplex *);
 
 /*! \brief Performs numeric block updates within the relaxed snode. 
  */

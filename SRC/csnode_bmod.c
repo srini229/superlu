@@ -34,6 +34,8 @@ at the top-level directory.
 
 #include "slu_cdefs.h"
 
+void clsolve(int, int, complex*, complex*);
+void cmatvec(int, int, int, complex*, complex*, complex*);
 
 /*! \brief Performs numeric block updates within the relaxed snode. 
  */
