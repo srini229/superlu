@@ -5,6 +5,7 @@
 	integer *incy)
 {
     /* System generated locals */
+    integer i__1;
 
     /* Local variables */
     integer i__, m, ix, iy, mp1;
@@ -51,7 +52,8 @@
     if (*incy < 0) {
 	iy = (-(*n) + 1) * *incy + 1;
     }
-    for (i__ = 1; i__ <= *n; ++i__) {
+    i__1 = *n;
+    for (i__ = 1; i__ <= i__1; ++i__) {
 	stemp = sx[ix];
 	sx[ix] = sy[iy];
 	sy[iy] = stemp;
@@ -71,7 +73,8 @@ L20:
     if (m == 0) {
 	goto L40;
     }
-    for (i__ = 1; i__ <= m; ++i__) {
+    i__1 = m;
+    for (i__ = 1; i__ <= i__1; ++i__) {
 	stemp = sx[i__];
 	sx[i__] = sy[i__];
 	sy[i__] = stemp;
@@ -82,7 +85,8 @@ L20:
     }
 L40:
     mp1 = m + 1;
-    for (i__ = mp1; i__ <= *n; i__ += 3) {
+    i__1 = *n;
+    for (i__ = mp1; i__ <= i__1; i__ += 3) {
 	stemp = sx[i__];
 	sx[i__] = sy[i__];
 	sy[i__] = stemp;

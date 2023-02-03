@@ -28,7 +28,7 @@ General Public License for more details.
 
 For information on ITSOL contact saad@cs.umn.edu
 */
-#include <unistd.h>
+
 #include "slu_cdefs.h"
 
 #define  epsmac  1.0e-16
@@ -90,10 +90,6 @@ int cfgmr(int n,
     complex zero = {0.0, 0.0};
     complex one = {1.0, 0.0};
     complex tt1, tt2;
-
-    /* prototypes */
-    extern int ccopy_(int *, complex *, int *, complex *, int *);
-    extern int caxpy_(int *, complex *, complex [], int *, complex [], int *);
 
     its = 0;
     vv = (complex **)SUPERLU_MALLOC((im + 1) * sizeof(complex *));

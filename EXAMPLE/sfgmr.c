@@ -28,7 +28,7 @@ General Public License for more details.
 
 For information on ITSOL contact saad@cs.umn.edu
 */
-#include <unistd.h>
+
 #include "slu_sdefs.h"
 
 #define  epsmac  1.0e-16
@@ -89,10 +89,6 @@ int sfgmr(int n,
     float **vv, **z, tt;
     float zero = 0.0;
     float one = 1.0;
-
-    /* prototypes */
-    extern int scopy_(int *, float *, int *, float *, int *);
-    extern int saxpy_(int *, float *, float [], int *, float [], int *);
 
     its = 0;
     vv = (float **)SUPERLU_MALLOC((im + 1) * sizeof(float *));

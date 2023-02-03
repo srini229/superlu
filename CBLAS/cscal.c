@@ -12,11 +12,11 @@
 
 
     /* System generated locals */
-
+    integer i__1, i__2, i__3, i__4;
     complex q__1;
 
     /* Local variables */
-    integer i, nincx;
+    static integer i, nincx;
 
 
 /*     scales a vector by a constant.   
@@ -41,7 +41,11 @@
 /*        code for increment not equal to 1 */
 
     nincx = *n * *incx;
+    i__1 = nincx;
+    i__2 = *incx;
     for (i = 1; *incx < 0 ? i >= nincx : i <= nincx; i += *incx) {
+	i__3 = i;
+	i__4 = i;
 	q__1.r = ca->r * CX(i).r - ca->i * CX(i).i, q__1.i = ca->r * CX(
 		i).i + ca->i * CX(i).r;
 	CX(i).r = q__1.r, CX(i).i = q__1.i;
@@ -52,7 +56,10 @@
 /*        code for increment equal to 1 */
 
 L20:
+    i__2 = *n;
     for (i = 1; i <= *n; ++i) {
+	i__1 = i;
+	i__3 = i;
 	q__1.r = ca->r * CX(i).r - ca->i * CX(i).i, q__1.i = ca->r * CX(
 		i).i + ca->i * CX(i).r;
 	CX(i).r = q__1.r, CX(i).i = q__1.i;

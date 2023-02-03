@@ -12,11 +12,12 @@
 
 
     /* System generated locals */
+    integer i__1;
 
     /* Local variables */
-    integer i;
-    doublereal dtemp;
-    integer ix, iy;
+    static integer i;
+    static doublereal dtemp;
+    static integer ix, iy;
 
 
 /*     applies a plane rotation.   
@@ -49,6 +50,7 @@
     if (*incy < 0) {
 	iy = (-(*n) + 1) * *incy + 1;
     }
+    i__1 = *n;
     for (i = 1; i <= *n; ++i) {
 	dtemp = *c * DX(ix) + *s * DY(iy);
 	DY(iy) = *c * DY(iy) - *s * DX(ix);
@@ -62,6 +64,7 @@
 /*       code for both increments equal to 1 */
 
 L20:
+    i__1 = *n;
     for (i = 1; i <= *n; ++i) {
 	dtemp = *c * DX(i) + *s * DY(i);
 	DY(i) = *c * DY(i) - *s * DX(i);

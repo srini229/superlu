@@ -28,7 +28,7 @@ General Public License for more details.
 
 For information on ITSOL contact saad@cs.umn.edu
 */
-#include <unistd.h>
+
 #include "slu_zdefs.h"
 
 #define  epsmac  1.0e-16
@@ -90,10 +90,6 @@ int zfgmr(int n,
     doublecomplex zero = {0.0, 0.0};
     doublecomplex one = {1.0, 0.0};
     doublecomplex tt1, tt2;
-
-    /* prototypes */
-    extern int zcopy_(int *, doublecomplex *, int *, doublecomplex *, int *);
-    extern int zaxpy_(int *, doublecomplex *, doublecomplex [], int *, doublecomplex [], int *);
 
     its = 0;
     vv = (doublecomplex **)SUPERLU_MALLOC((im + 1) * sizeof(doublecomplex *));

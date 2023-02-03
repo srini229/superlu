@@ -84,11 +84,11 @@ scopy_to_ucol(
 
 		new_next = nextu + segsze;
 		while ( new_next > nzumax ) {
-		    mem_error = sLUMemXpand(jcol, nextu, UCOL, &nzumax, Glu);
-		    if (mem_error) return (mem_error);
+		    if (mem_error = sLUMemXpand(jcol, nextu, UCOL, &nzumax, Glu))
+			return (mem_error);
 		    ucol = (float *) Glu->ucol;
-		    mem_error = sLUMemXpand(jcol, nextu, USUB, &nzumax, Glu);
-		    if (mem_error) return (mem_error);
+		    if (mem_error = sLUMemXpand(jcol, nextu, USUB, &nzumax, Glu))
+			return (mem_error);
 		    usub = Glu->usub;
 		    lsub = Glu->lsub;
 		}

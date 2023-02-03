@@ -64,7 +64,7 @@ int dgst01(int m, int n, SuperMatrix *A, SuperMatrix *L,
     /* Local variables */
     double zero = 0.0;
     int i, j, k, arow, lptr,isub,  urow, superno, fsupc, u_part;
-    double utemp;
+    double utemp, comp_temp;
     double anorm, tnorm, cnorm;
     double eps;
     double *work;

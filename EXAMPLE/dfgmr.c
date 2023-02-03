@@ -28,7 +28,7 @@ General Public License for more details.
 
 For information on ITSOL contact saad@cs.umn.edu
 */
-#include <unistd.h>
+
 #include "slu_ddefs.h"
 
 #define  epsmac  1.0e-16
@@ -89,10 +89,6 @@ int dfgmr(int n,
     double **vv, **z, tt;
     double zero = 0.0;
     double one = 1.0;
-
-    /* prototypes */
-    extern int dcopy_(int *, double *, int *, double *, int *);
-    extern int daxpy_(int *, double *, double [], int *, double [], int *);
 
     its = 0;
     vv = (double **)SUPERLU_MALLOC((im + 1) * sizeof(double *));

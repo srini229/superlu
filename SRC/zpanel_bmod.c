@@ -38,6 +38,13 @@ at the top-level directory.
 #include <stdlib.h>
 #include "slu_zdefs.h"
 
+/* 
+ * Function prototypes 
+ */
+void zlsolve(int, int, doublecomplex *, doublecomplex *);
+void zmatvec(int, int, int, doublecomplex *, doublecomplex *, doublecomplex *);
+extern void zcheck_tempv();
+
 /*! \brief
  *
  * <pre>

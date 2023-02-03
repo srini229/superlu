@@ -64,8 +64,7 @@ int cgst01(int m, int n, SuperMatrix *A, SuperMatrix *L,
     /* Local variables */
     complex zero = {0.0, 0.0};
     int i, j, k, arow, lptr,isub,  urow, superno, fsupc, u_part;
-    complex utemp;
-    complex comp_temp;
+    complex utemp, comp_temp;
     float anorm, tnorm, cnorm;
     float eps;
     complex *work;

@@ -13,12 +13,13 @@
 
 
     /* System generated locals */
+    integer a_dim1, a_offset, i__1, i__2;
 
     /* Local variables */
-    integer info;
-    real temp;
-    integer lenx, leny, i, j;
-    integer ix, iy, jx, jy, kx, ky;
+    static integer info;
+    static real temp;
+    static integer lenx, leny, i, j;
+    static integer ix, iy, jx, jy, kx, ky;
 
     extern int input_error(char *, int *);
 
@@ -149,7 +150,7 @@
 
 /*     Quick return if possible. */
 
-    if (*m == 0 || *n == 0 || (*alpha == 0.f && *beta == 1.f)) {
+    if (*m == 0 || *n == 0 || *alpha == 0.f && *beta == 1.f) {
 	return 0;
     }
 
@@ -183,11 +184,13 @@
     if (*beta != 1.f) {
 	if (*incy == 1) {
 	    if (*beta == 0.f) {
+		i__1 = leny;
 		for (i = 1; i <= leny; ++i) {
 		    Y(i) = 0.f;
 /* L10: */
 		}
 	    } else {
+		i__1 = leny;
 		for (i = 1; i <= leny; ++i) {
 		    Y(i) = *beta * Y(i);
 /* L20: */
@@ -196,12 +199,14 @@
 	} else {
 	    iy = ky;
 	    if (*beta == 0.f) {
+		i__1 = leny;
 		for (i = 1; i <= leny; ++i) {
 		    Y(iy) = 0.f;
 		    iy += *incy;
 /* L30: */
 		}
 	    } else {
+		i__1 = leny;
 		for (i = 1; i <= leny; ++i) {
 		    Y(iy) = *beta * Y(iy);
 		    iy += *incy;
@@ -219,9 +224,11 @@
 
 	jx = kx;
 	if (*incy == 1) {
+	    i__1 = *n;
 	    for (j = 1; j <= *n; ++j) {
 		if (X(jx) != 0.f) {
 		    temp = *alpha * X(jx);
+		    i__2 = *m;
 		    for (i = 1; i <= *m; ++i) {
 			Y(i) += temp * A(i,j);
 /* L50: */
@@ -231,10 +238,12 @@
 /* L60: */
 	    }
 	} else {
+	    i__1 = *n;
 	    for (j = 1; j <= *n; ++j) {
 		if (X(jx) != 0.f) {
 		    temp = *alpha * X(jx);
 		    iy = ky;
+		    i__2 = *m;
 		    for (i = 1; i <= *m; ++i) {
 			Y(iy) += temp * A(i,j);
 			iy += *incy;
@@ -251,8 +260,10 @@
 
 	jy = ky;
 	if (*incx == 1) {
+	    i__1 = *n;
 	    for (j = 1; j <= *n; ++j) {
 		temp = 0.f;
+		i__2 = *m;
 		for (i = 1; i <= *m; ++i) {
 		    temp += A(i,j) * X(i);
 /* L90: */
@@ -262,9 +273,11 @@
 /* L100: */
 	    }
 	} else {
+	    i__1 = *n;
 	    for (j = 1; j <= *n; ++j) {
 		temp = 0.f;
 		ix = kx;
+		i__2 = *m;
 		for (i = 1; i <= *m; ++i) {
 		    temp += A(i,j) * X(ix);
 		    ix += *incx;

@@ -18,7 +18,6 @@ at the top-level directory.
  * Last update: July 10, 2015
  *
  */
-#include <unistd.h>
 #include "slu_zdefs.h"
 
 int main(int argc, char *argv[])

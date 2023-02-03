@@ -38,6 +38,13 @@ at the top-level directory.
 #include <stdlib.h>
 #include "slu_cdefs.h"
 
+/* 
+ * Function prototypes 
+ */
+void clsolve(int, int, complex *, complex *);
+void cmatvec(int, int, int, complex *, complex *, complex *);
+extern void ccheck_tempv();
+
 /*! \brief
  *
  * <pre>

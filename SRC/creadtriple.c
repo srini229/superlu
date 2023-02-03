@@ -134,11 +134,11 @@ creadtriple(int *m, int *n, int *nonz,
 
 void creadrhs(int m, complex *b)
 {
-    FILE *fp = fopen("b.dat", "r");
+    FILE *fp, *fopen();
     int i;
     /*int j;*/
 
-    if (!fp) {
+    if ( !(fp = fopen("b.dat", "r")) ) {
         fprintf(stderr, "dreadrhs: file does not exist\n");
 	exit(-1);
     }

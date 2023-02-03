@@ -12,11 +12,12 @@
 
 
     /* System generated locals */
+    integer i__1;
 
     /* Local variables */
-    integer i;
-    real stemp;
-    integer ix, iy;
+    static integer i;
+    static real stemp;
+    static integer ix, iy;
 
 
 /*     applies a plane rotation.   
@@ -49,6 +50,7 @@
     if (*incy < 0) {
 	iy = (-(*n) + 1) * *incy + 1;
     }
+    i__1 = *n;
     for (i = 1; i <= *n; ++i) {
 	stemp = *c * SX(ix) + *s * SY(iy);
 	SY(iy) = *c * SY(iy) - *s * SX(ix);
@@ -62,6 +64,7 @@
 /*       code for both increments equal to 1 */
 
 L20:
+    i__1 = *n;
     for (i = 1; i <= *n; ++i) {
 	stemp = *c * SX(i) + *s * SY(i);
 	SY(i) = *c * SY(i) - *s * SX(i);

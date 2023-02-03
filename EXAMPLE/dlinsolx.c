@@ -16,7 +16,6 @@ at the top-level directory.
  * August 1, 2008
  *
  */
-#include <unistd.h>
 #include "slu_ddefs.h"
 
 int main(int argc, char *argv[])
@@ -93,8 +92,13 @@ int main(int argc, char *argv[])
 	}
     }
 
+#if 1
     /* Read matrix A from a file in Harwell-Boeing format.*/
     dreadhb(fp, &m, &n, &nnz, &a, &asub, &xa);
+#else
+    /* Read matrix A from a file in Matrix Market format.*/
+    dreadMM(fp, &m, &n, &nnz, &a, &asub, &xa);
+#endif
     
     dCreate_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, SLU_D, SLU_GE);
     Astore = A.Store;

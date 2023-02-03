@@ -88,8 +88,8 @@ zsnode_dfs (
 		marker[krow] = kcol;
 		lsub[nextl++] = krow;
 		if ( nextl >= nzlmax ) {
-		    mem_error = zLUMemXpand(jcol, nextl, LSUB, &nzlmax, Glu);
-		    if ( mem_error ) return (mem_error);
+		    if ( mem_error = zLUMemXpand(jcol, nextl, LSUB, &nzlmax, Glu) )
+			return (mem_error);
 		    lsub = Glu->lsub;
 		}
 	    }
@@ -101,8 +101,8 @@ zsnode_dfs (
     if ( jcol < kcol ) {
 	new_next = nextl + (nextl - xlsub[jcol]);
 	while ( new_next > nzlmax ) {
-	    mem_error = zLUMemXpand(jcol, nextl, LSUB, &nzlmax, Glu);
-	    if ( mem_error ) return (mem_error);
+	    if ( mem_error = zLUMemXpand(jcol, nextl, LSUB, &nzlmax, Glu) )
+		return (mem_error);
 	    lsub = Glu->lsub;
 	}
 	ito = nextl;

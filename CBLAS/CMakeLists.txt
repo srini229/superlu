@@ -2,8 +2,7 @@ set(headers
     f2c.h
     slu_Cnames.h
 )
-
-set(sources input_error.c)
+set(sources "")
 
 #if (enable_single)
     list(APPEND sources
@@ -16,11 +15,11 @@ set(sources input_error.c)
       srot.c 
       sscal.c 
       sswap.c
-      sgemv.c
-      ssymv.c
-      strsv.c
-      sger.c
-      ssyr2.c
+      sgemv
+      ssymv
+      strsv
+      sger
+      ssyr2
     )
 #endif()
 
@@ -80,7 +79,7 @@ set(sources input_error.c)
     )
 #endif()
 
-add_library(blas ${sources})
+add_library(blas ${sources} ${HEADERS})
 
 include(GNUInstallDirs)
 install(TARGETS blas

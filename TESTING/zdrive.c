@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     int            i, j, k1;
     double         rowcnd, colcnd, amax;
     int            maxsuper, rowblk, colblk;
-    int            prefact, equil, iequed;
+    int            prefact, nofact, equil, iequed;
     int            nt, nrun, nfail, nerrs, imat, fimat, nimat;
     int            nfact, ifact, itran;
     int            kl, ku, mode, lda;
@@ -273,6 +273,7 @@ int main(int argc, char *argv[])
 		    prefact   = ( options.Fact == FACTORED ||
 				  options.Fact == SamePattern_SameRowPerm );
                                 /* Need a first factor */
+		    nofact    = (options.Fact != FACTORED);  /* Not factored */
 
 		    /* Restore the matrix A. */
 		    zCopy_CompCol_Matrix(&ASAV, &A);

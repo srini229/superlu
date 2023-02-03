@@ -35,6 +35,14 @@ at the top-level directory.
 #include <stdlib.h>
 #include "slu_ddefs.h"
 
+/* 
+ * Function prototypes 
+ */
+void dusolve(int, int, double*, double*);
+void dlsolve(int, int, double*, double*);
+void dmatvec(int, int, int, double*, double*, double*);
+
+
 
 /*! \brief 
  *
@@ -272,8 +280,8 @@ dcolumn_bmod (
     /* Copy the SPA dense into L\U[*,j] */
     new_next = nextlu + xlsub[fsupc+1] - xlsub[fsupc];
     while ( new_next > nzlumax ) {
-	mem_error = dLUMemXpand(jcol, nextlu, LUSUP, &nzlumax, Glu);
-	if (mem_error) return (mem_error);
+	if (mem_error = dLUMemXpand(jcol, nextlu, LUSUP, &nzlumax, Glu))
+	    return (mem_error);
 	lusup = (double *) Glu->lusup;
 	lsub = Glu->lsub;
     }

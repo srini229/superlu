@@ -420,6 +420,7 @@ dgsisx(superlu_options_t *options, SuperMatrix *A, int *perm_c, int *perm_r,
     int       i, j, info1;
     double    amax, anorm, bignum, smlnum, colcnd, rowcnd, rcmax, rcmin;
     int       relax, panel_size;
+    double    diag_pivot_thresh;
     double    t0;      /* temporary time */
     double    *utime;
 
@@ -515,6 +516,7 @@ dgsisx(superlu_options_t *options, SuperMatrix *A, int *perm_c, int *perm_r,
     /* Initialization for factor parameters */
     panel_size = sp_ienv(1);
     relax      = sp_ienv(2);
+    diag_pivot_thresh = options->DiagPivotThresh;
 
     utime = stat->utime;
 
@@ -583,7 +585,7 @@ dgsisx(superlu_options_t *options, SuperMatrix *A, int *perm_c, int *perm_r,
 	    utime[EQUIL] = SuperLU_timer_() - t0;
 	}
 
-	if ( mc64==0 && equil ) { /* Only perform equilibration, no row perm */
+	if ( !mc64 & equil ) { /* Only perform equilibration, no row perm */
 	    t0 = SuperLU_timer_();
 	    /* Compute row and column scalings to equilibrate the matrix A. */
 	    dgsequ(AA, R, C, &rowcnd, &colcnd, &amax, &info1);
@@ -672,6 +674,7 @@ dgsisx(superlu_options_t *options, SuperMatrix *A, int *perm_c, int *perm_r,
     }
 
     if ( nrhs > 0 ) { /* Solve the system */
+        double *rhs_work;
 
 	/* Scale and permute the right-hand side if equilibration
            and permutation from MC64 were performed. */

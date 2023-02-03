@@ -57,7 +57,7 @@ sreadMM(FILE *fp, int *m, int *n, int *nonz,
 
      if (sscanf(line, "%s %s %s %s %s", banner, mtx, crd, arith, sym) != 5) {
        printf("Invalid header (first line does not contain 5 tokens)\n");
-       exit(-1);
+       exit;
      }
  
      if(strcmp(banner,"%%matrixmarket")) {
@@ -137,14 +137,13 @@ sreadMM(FILE *fp, int *m, int *n, int *nonz,
     /* 4/ Read triplets of values */
     for (nnz = 0, nz = 0; nnz < *nonz; ++nnz) {
 
-	if ( nnz == 0 ) { /* first nonzero */
+	if ( nnz == 0 ) /* first nonzero */
 	    if ( row[0] == 0 || col[0] == 0 ) {
 		zero_base = 1;
 		printf("triplet file: row/col indices are zero-based.\n");
 	    } else {
 		printf("triplet file: row/col indices are one-based.\n");
             }
-	}
 
 	if ( !zero_base ) {
 	    /* Change to 0-based indexing. */
@@ -218,10 +217,10 @@ sreadMM(FILE *fp, int *m, int *n, int *nonz,
 
 static void sreadrhs(int m, float *b)
 {
-    FILE *fp = fopen("b.dat", "r");
+    FILE *fp, *fopen();
     int i;
 
-    if (!fp) {
+    if ( !(fp = fopen("b.dat", "r")) ) {
         fprintf(stderr, "sreadrhs: file does not exist\n");
 	exit(-1);
     }

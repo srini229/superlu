@@ -232,7 +232,7 @@ if(enable_complex16)
   )
 endif()
 
-add_library(superlu ${sources})
+add_library(superlu ${sources} ${HEADERS})
 target_link_libraries(superlu PUBLIC ${BLAS_LIB})
 if (NOT WIN32)
   target_link_libraries(superlu PUBLIC m)
@@ -250,7 +250,6 @@ include(GNUInstallDirs)
 
 install(TARGETS superlu
   EXPORT superluTargets
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
@@ -266,7 +265,6 @@ write_basic_package_version_file(
   VERSION ${PACKAGE_VERSION}
   COMPATIBILITY SameMajorVersion
   )
-#  VERSION ${PROJECT_VERSION}
 
 install(EXPORT superluTargets
   FILE superluTargets.cmake
